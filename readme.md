@@ -5,7 +5,7 @@ This is a discord bot to notify people in a discord server that certain streamer
 
 ## Configuration 
 
-`const token = process.env.token;` set your `token` (found in your discord dev settings) in your `.env` file with the format `token=YOURSECRETTOKEN` 
+`const token = process.env.token;` set your own unique `token` with `token=YOURSECRETTOKEN`  in your `.env` file
 
 ## Token
 

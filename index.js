@@ -4,6 +4,7 @@ require('dotenv').config();
 const Discord = require('discord.js');
 
 const token = process.env.token;
+const clientID = process.env.clientID;
 
 const client = new Discord.Client();
 
@@ -12,7 +13,7 @@ const axios = require('axios');
 
 
 async function checkAzOnline() {
-	const res = await axios.get('https://api.twitch.tv/helix/streams?user_id=109520990', { headers: { "Client-ID": 'ncfutbklqgf5f0c8mcnrcf785vdm90' } })
+	const res = await axios.get('https://api.twitch.tv/helix/streams?user_id=109520990', { headers: { "Client-ID": clientID } })
 	.catch(error => {
 		console.log(error);
 	});
@@ -27,7 +28,7 @@ async function checkAzOnline() {
 	};
 
 async function checkBrickyOnline() {
-	const res = await axios.get('https://api.twitch.tv/helix/streams?user_id=31125018', { headers: { "Client-ID": 'ncfutbklqgf5f0c8mcnrcf785vdm90' } })
+	const res = await axios.get('https://api.twitch.tv/helix/streams?user_id=31125018', { headers: { "Client-ID": clientID } })
 	.catch(error => {
 		console.log(error);
 	});
