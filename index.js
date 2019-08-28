@@ -3,13 +3,12 @@ require('dotenv').config();
 
 const Discord = require('discord.js');
 
+const axios = require('axios');
+
 const token = process.env.token;
 const clientID = process.env.clientID;
 
 const client = new Discord.Client();
-
-const axios = require('axios');
-
 
 
 async function checkAzOnline() {
@@ -44,13 +43,15 @@ async function checkBrickyOnline() {
 
 
 
+// bot commands
+
 
 client.on('ready', () => {
 
 	console.log('Bot is now connected')
 	
-	setInterval(checkAzOnline, 60000);
-	setInterval(checkBrickyOnline, 60000);
+	setInterval(checkAzOnline, 30000);
+	setInterval(checkBrickyOnline, 30000);
 
 	// checkAzOnline();
 	// checkBrickyOnline();
@@ -74,28 +75,7 @@ client.on('message', (msg) => {
 });
 
 
-
-
-
-
-
-
-// getSrc().then(response => {
-// console.log(response.data);
-// console.log(response.data.data.length);
-// var streamStatus = response.data.data.length;
-// if (streamStatus === 0) {
-// 	console.log('stream is offline');
-// } else {
-// 	console.log('stream is online');
-//     }
-// })
-// .catch(error => {
-//     console.log(error);
-// });
-
-
-
+// if streamer is live stop checking for 1 hour
 
 
 
