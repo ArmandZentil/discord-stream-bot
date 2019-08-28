@@ -19,9 +19,10 @@ async function checkAzOnline() {
 	const status = res.data.data.length;
 	console.log(status);
 	if (status === 0) {
-		client.channels.find(x => x.name === 'lobby').send('streamer "AZ" is offline');
+		return;
+		// client.channels.find(x => x.name === 'lobby').send('streamer "AZ" is offline');
 	} else {
-		client.channels.find(x => x.name === 'lobby').send('streamer "AZ" is online' + 'https://www.twitch.tv/azstreamlife');
+		client.channels.find(x => x.name === 'lobby').send('streamer "AZ" is online' + ' ' + 'https://www.twitch.tv/azstreamlife');
 	}
 	};
 
@@ -33,9 +34,10 @@ async function checkBrickyOnline() {
 	const status = res.data.data.length;
 	console.log(status);
 	if (status === 0) {
-		client.channels.find(x => x.name === 'lobby').send('streamer "BrickyLouch" is offline');
+		return;
+		// client.channels.find(x => x.name === 'lobby').send('streamer "BrickyLouch" is offline');
 	} else {
-		client.channels.find(x => x.name === 'lobby').send('streamer "BrickyLouch" is online ' + 'https://www.twitch.tv/BrickyLouch');
+		client.channels.find(x => x.name === 'lobby').send('streamer "BrickyLouch" is online ' + ' ' + 'https://www.twitch.tv/BrickyLouch');
 	}
 	};
 
@@ -45,8 +47,12 @@ async function checkBrickyOnline() {
 client.on('ready', () => {
 
 	console.log('Bot is now connected')
-	checkAzOnline();
-	checkBrickyOnline();
+	
+	setInterval(checkAzOnline, 60000);
+	setInterval(checkBrickyOnline, 60000);
+
+	// checkAzOnline();
+	// checkBrickyOnline();
 
 });
 
