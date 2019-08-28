@@ -7,21 +7,88 @@ const token = process.env.token;
 
 const client = new Discord.Client();
 
+const axios = require('axios');
+
+
+
+async function checkAzOnline() {
+	const res = await axios.get('https://api.twitch.tv/helix/streams?user_id=109520990', { headers: { "Client-ID": 'ncfutbklqgf5f0c8mcnrcf785vdm90' } })
+	.catch(error => {
+		console.log(error);
+	});
+	const status = res.data.data.length;
+	console.log(status);
+	if (status === 0) {
+		client.channels.find(x => x.name === 'lobby').send('streamer "AZ" is offline');
+	} else {
+		client.channels.find(x => x.name === 'lobby').send('streamer "AZ" is online' + 'https://www.twitch.tv/azstreamlife');
+	}
+	};
+
+async function checkBrickyOnline() {
+	const res = await axios.get('https://api.twitch.tv/helix/streams?user_id=31125018', { headers: { "Client-ID": 'ncfutbklqgf5f0c8mcnrcf785vdm90' } })
+	.catch(error => {
+		console.log(error);
+	});
+	const status = res.data.data.length;
+	console.log(status);
+	if (status === 0) {
+		client.channels.find(x => x.name === 'lobby').send('streamer "BrickyLouch" is offline');
+	} else {
+		client.channels.find(x => x.name === 'lobby').send('streamer "BrickyLouch" is online ' + 'https://www.twitch.tv/BrickyLouch');
+	}
+	};
+
+
+
+
+client.on('ready', () => {
+
+	console.log('Bot is now connected')
+	checkAzOnline();
+	checkBrickyOnline();
+
+});
+
+
+
 client.on('message', (msg) => {
 	if (msg.content === '!sup'){
-		msg.channel.send(`yo ${msg.author}, nm dude wys?`);
+		msg.channel.send(`yo ${msg.author}`);
 	}
 
 	if (msg.content === '!AZ') {
 		msg.channel.send('https://www.twitch.tv/azstreamlife');
 	}
+
+	if (msg.content === '!stream') {
+
+	}
 });
 
-client.on('ready', () => {
-	console.log('Bot is now connected')
 
-	// client.channels.find(x => x.name === 'lobby').send('Hello! I\'m now connected!');
-});
+
+
+
+
+
+
+// getSrc().then(response => {
+// console.log(response.data);
+// console.log(response.data.data.length);
+// var streamStatus = response.data.data.length;
+// if (streamStatus === 0) {
+// 	console.log('stream is offline');
+// } else {
+// 	console.log('stream is online');
+//     }
+// })
+// .catch(error => {
+//     console.log(error);
+// });
+
+
+
 
 
 
