@@ -3,6 +3,12 @@
 
 This is a discord bot to notify people in a discord server that certain streamers have gone online
 
+## Installation 
+
+`cd discord-stream-bot`<br />
+`npm install`
+
+
 ## Configuration 
 
 You will have to set your own unique `token` and `clientID` in your `.env` file with the format `token=yoursecrettoken`
@@ -17,8 +23,4 @@ To get a token you will need to create an app
 To get a Twitch client-ID you will need to register a new application [here](https://www.twitch.tv/settings/connections).
 
 
-## Installation 
-
-`cd discord-stream-bot`<br />
-`npm install`
 

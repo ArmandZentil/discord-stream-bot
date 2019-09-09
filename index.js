@@ -1,4 +1,3 @@
-
 require('dotenv').config();
 
 const Discord = require('discord.js');
@@ -20,7 +19,6 @@ async function checkAzOnline() {
 	console.log(status);
 	if (status === 0) {
 		return;
-		// client.channels.find(x => x.name === 'lobby').send('streamer "AZ" is offline');
 	} else {
 		client.channels.find(x => x.name === 'lobby').send('streamer "AZ" is online' + ' ' + 'https://www.twitch.tv/azstreamlife');
 	}
@@ -35,7 +33,6 @@ async function checkBrickyOnline() {
 	console.log(status);
 	if (status === 0) {
 		return;
-		// client.channels.find(x => x.name === 'lobby').send('streamer "BrickyLouch" is offline');
 	} else {
 		client.channels.find(x => x.name === 'lobby').send('streamer "BrickyLouch" is online ' + ' ' + 'https://www.twitch.tv/BrickyLouch');
 	}
@@ -80,3 +77,14 @@ client.on('message', (msg) => {
 
 
 client.login(token); 
+
+
+// set up ngrok to creat callback
+// use twitch-webhook npm package to listen
+
+
+// send post request to twitch to subscribe to getstreams event
+// receive response from twitch
+// reply with 200 code to confirm subscription
+// receive payload from twitch
+// post messsage to discord channel
